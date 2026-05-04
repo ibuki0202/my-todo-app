@@ -23,13 +23,20 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
+  const clearAll = () => {
+    if (window.confirm('本当に全削除しますか？')) {
+      setTodos([])
+    }
+  }
+
   return (
     <div>
       <h1>TODOアプリ</h1>
       <TodoForm onAdd={addTodo} />
+      <button onClick={clearAll} style={{ margin: '8px 0' }}>
+        全削除
+      </button>
       <TodoList todos={todos} onDelete={deleteTodo} />
-      <h2>API取得サンプル</h2>
-<ApiSample />
     </div>
   )
 }
