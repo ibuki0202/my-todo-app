@@ -1,7 +1,12 @@
-function TodoItem({ todo, onDelete }) {
+function TodoItem({ todo, onDelete, onCheck }) {
+  const style = {
+    textDecoration: todo.completed ? 'line-through' : 'none',
+  }
+
   return (
     <li>
-      {todo.text}
+      <input type="checkbox" checked={todo.completed} onChange={() => onCheck(todo.id)}></input>
+      <span style={style}>{todo.text}</span>
       <button onClick={() => onDelete(todo.id)} style={{ marginLeft: '8px' }}>
         削除
       </button>

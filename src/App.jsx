@@ -15,7 +15,7 @@ function App() {
   }, [todos])
 
   const addTodo = (text) => {
-    const newTodo = { id: Date.now(), text }
+    const newTodo = { id: Date.now(), text, completed:false}
     setTodos([...todos, newTodo])
   }
 
@@ -29,6 +29,12 @@ function App() {
     }
   }
 
+   const checkTodo = (id) => {
+    setTodos(todos.map(todo => 
+    todo.id === id ? { ...todo, completed : !todo.completed } : todo
+  ))
+  }
+
   return (
     <div>
       <h1>TODOアプリ</h1>
@@ -36,7 +42,7 @@ function App() {
       <button onClick={clearAll} style={{ margin: '8px 0' }}>
         全削除
       </button>
-      <TodoList todos={todos} onDelete={deleteTodo} />
+      <TodoList todos={todos} onDelete={deleteTodo} onCheck={checkTodo} />
     </div>
   )
 }
