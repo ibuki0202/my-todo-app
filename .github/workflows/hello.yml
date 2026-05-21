@@ -1,0 +1,20 @@
+name: Hello
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 挨拶
+        run: echo "Hello from GitHub Actions!"
+
+      - name: 今の日時を表示
+        run: date
+
+      - name: 作業ディレクトリを表示
+        run: pwd
+        
